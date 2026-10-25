@@ -1,0 +1,6 @@
+{
+  "name": "nhon-thinh-website-build",
+  "private": true,
+  "scripts": { "build": "node build.js nhon-thinh.html ../site" },
+  "dependencies": { "jsdom": "24.1.3" }
+}
