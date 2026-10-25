@@ -578,12 +578,22 @@ a.soc:hover{background:var(--lime);color:var(--on-lime);border-color:var(--lime)
 .fmt-card .svc-ico svg{width:22px;height:22px}
 .fmt-card h3{font-size:1rem;letter-spacing:-.01em;margin-top:2px}
 .fmt-arrow{width:18px;height:18px;color:var(--ink2)}
+.svc-cards-4{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:16px}
+.svc-cards-4 .svc-body-min{flex-wrap:wrap;row-gap:6px!important}
+.svc-cards-4 .svc-body-min .svc-num{flex-basis:100%}
+.svc-cards-4 .svc-body-min .h3{font-size:1.15rem}
+@media (max-width:960px){.svc-cards-4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.svc-cards-4{grid-template-columns:1fr}}
 .certs{margin-top:28px;padding:22px 24px;border:1px solid var(--line);border-radius:var(--r-md);display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;background:var(--mint2)}
 .certs-lbl{font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
 .certs ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:12px 28px;flex:1}
-.certs li{display:flex;align-items:baseline;gap:10px}
+.certs ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));flex-basis:100%}
+@media (max-width:960px){.certs ul{grid-template-columns:1fr}}
+.certs li{display:flex;align-items:center;gap:12px}
+.certs li > div{display:grid;gap:2px}
 .certs li b{font-size:1.15rem;letter-spacing:-.01em}
 .certs li span{font-size:.86rem;color:var(--ink2)}
+.cert-logo{width:64px;height:64px;object-fit:contain;flex-shrink:0;background:#FFFFFF;border-radius:var(--r-sm);padding:6px}
 .certs-note{font-size:.8rem;color:var(--ink2);border:1px dashed var(--line);padding:4px 8px;border-radius:var(--r-sm)}
 
 /* bento */
@@ -721,13 +731,17 @@ a.soc:hover{background:var(--lime);color:var(--on-lime);border-color:var(--lime)
       <div class="svc-body svc-body-min"><span class="svc-num">02</span><h3 class="h3">Suất ăn tổ chức</h3><svg class="fmt-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a><a class="svc-card" href="/dich-vu" data-scroll="svc-corporate" data-r="">
       <figure class="ph " style="--ar:16/10;margin:0"><img src="/img/svc-corporate.jpg" alt="Suất ăn văn phòng, chuyên gia" loading="lazy"></figure>
       <div class="svc-body svc-body-min"><span class="svc-num">03</span><h3 class="h3">Catering doanh nghiệp</h3><svg class="fmt-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a></div>
-    <div class="fmt-cards"><a class="fmt-card" href="/dich-vu" data-scroll="svc-contract" data-r="">
-      <span class="svc-ico"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v5h5M10 13h6M10 17h6"></path></svg></span><div><span class="svc-en">04 · Contract</span><h3>Hợp đồng trọn gói dài hạn</h3></div><svg class="fmt-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><a class="fmt-card" href="/dich-vu" data-scroll="svc-onsite" data-r="">
-      <span class="svc-ico"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"></path><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.8c1.8.7 3 2.4 3.5 5.2"></path></svg></span><div><span class="svc-en">05 · On-site</span><h3>Tại chỗ</h3></div><svg class="fmt-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><a class="fmt-card" href="/dich-vu" data-scroll="svc-offsite" data-r="">
-      <span class="svc-ico"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg></span><div><span class="svc-en">06 · Off-site</span><h3>Phục vụ tại địa điểm sự kiện</h3></div><svg class="fmt-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><a class="fmt-card" href="/dich-vu" data-scroll="svc-dropoff" data-r="">
-      <span class="svc-ico"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h12v10H2zM14 10h4.5L22 13.5V16h-8"></path><circle cx="6.5" cy="17.5" r="2"></circle><circle cx="17.5" cy="17.5" r="2"></circle></svg></span><div><span class="svc-en">07 · Drop-off</span><h3>Giao tận nơi</h3></div><svg class="fmt-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+    <div class="svc-cards svc-cards-4"><a class="svc-card" href="/dich-vu" data-scroll="svc-contract" data-r="">
+      <figure class="ph " style="--ar:16/10;margin:0"><img src="/img/svc-contract.jpg" alt="Đối soát hợp đồng" loading="lazy"></figure>
+      <div class="svc-body svc-body-min"><span class="svc-num">04 · Contract</span><h3 class="h3">Hợp đồng trọn gói dài hạn</h3><svg class="fmt-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a><a class="svc-card" href="/dich-vu" data-scroll="svc-onsite" data-r="">
+      <figure class="ph " style="--ar:16/10;margin:0"><img src="/img/kitchen.jpg" alt="Bếp vận hành tại nhà máy" loading="lazy"></figure>
+      <div class="svc-body svc-body-min"><span class="svc-num">05 · On-site</span><h3 class="h3">Tại chỗ</h3><svg class="fmt-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a><a class="svc-card" href="/dich-vu" data-scroll="svc-offsite" data-r="">
+      <figure class="ph " style="--ar:16/10;margin:0"><img src="/img/yearend-hall.jpg" alt="Buffet tại sự kiện" loading="lazy"></figure>
+      <div class="svc-body svc-body-min"><span class="svc-num">06 · Off-site</span><h3 class="h3">Phục vụ tại địa điểm sự kiện</h3><svg class="fmt-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a><a class="svc-card" href="/dich-vu" data-scroll="svc-dropoff" data-r="">
+      <figure class="ph " style="--ar:16/10;margin:0"><img src="/img/svc-dropoff.jpg" alt="Giao suất ăn" loading="lazy"></figure>
+      <div class="svc-body svc-body-min"><span class="svc-num">07 · Drop-off</span><h3 class="h3">Giao tận nơi</h3><svg class="fmt-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a></div>
     <div class="certs" data-r=""><span class="certs-lbl">Chứng nhận</span>
-      <ul><li><b>ATTP</b><span>Cơ sở đủ điều kiện an toàn thực phẩm</span></li><li><b>HACCP</b><span>Hệ thống phân tích mối nguy</span></li><li><b>ISO 22000</b><span>Quản lý an toàn thực phẩm</span></li></ul>
+      <ul><li><img class="cert-logo" src="/img/cert-attp.png" alt="ATTP" loading="lazy"><div><b>ATTP</b><span>Cơ sở đủ điều kiện an toàn thực phẩm</span></div></li><li><img class="cert-logo" src="/img/cert-haccp.png" alt="HACCP" loading="lazy"><div><b>HACCP</b><span>Hệ thống phân tích mối nguy</span></div></li><li><img class="cert-logo" src="/img/cert-iso22000.png" alt="ISO 22000" loading="lazy"><div><b>ISO 22000</b><span>Quản lý an toàn thực phẩm</span></div></li></ul>
       <span class="certs-note">Minh họa, chờ xác nhận chứng nhận thật</span></div>
   </div></section>
 
@@ -852,9 +866,9 @@ const CONFIG = {
   },
   social: { facebook: null, messenger: null, zaloOA: null, linkedin: null },   // full URLs; icons stay visible, links activate once filled
   certifications: [                                                             // set verified:true only for certificates the company currently holds
-    { code:'ATTP', name:{vi:'Cơ sở đủ điều kiện an toàn thực phẩm',en:'Food safety eligibility certificate'}, verified:false },
-    { code:'HACCP', name:{vi:'Hệ thống phân tích mối nguy',en:'Hazard analysis & critical control points'}, verified:false },
-    { code:'ISO 22000', name:{vi:'Quản lý an toàn thực phẩm',en:'Food safety management'}, verified:false }
+    { code:'ATTP', logo:'/img/cert-attp.png', name:{vi:'Cơ sở đủ điều kiện an toàn thực phẩm',en:'Food safety eligibility certificate'}, verified:false },
+    { code:'HACCP', logo:'/img/cert-haccp.png', name:{vi:'Hệ thống phân tích mối nguy',en:'Hazard analysis & critical control points'}, verified:false },
+    { code:'ISO 22000', logo:'/img/cert-iso22000.png', name:{vi:'Quản lý an toàn thực phẩm',en:'Food safety management'}, verified:false }
   ],
   profilePdf: { vi: null, en: null },
   formEndpoints: { quote: null, careers: null },   // POST URLs of the form backend (email / Sheets adapter)
@@ -1349,10 +1363,11 @@ VIEWS.home = () => {
     <div class="svc-cards">${who.map(s => `<a class="svc-card" href="${href('services')}" data-scroll="svc-${s.key}" data-r>
       ${imgSlot('svc-'+s.key,'16/10')}
       <div class="svc-body svc-body-min"><span class="svc-num">${s.num}</span><h3 class="h3">${L(s.title)}</h3>${ic('arrow','fmt-arrow')}</div></a>`).join('')}</div>
-    <div class="fmt-cards">${how.map(s => `<a class="fmt-card" href="${href('services')}" data-scroll="svc-${s.key}" data-r>
-      <span class="svc-ico">${ic(s.icon)}</span><div><span class="svc-en">${s.num} · ${s.tag}</span><h3>${L(s.title)}</h3></div>${ic('arrow','fmt-arrow')}</a>`).join('')}</div>
+    <div class="svc-cards svc-cards-4">${how.map(s => `<a class="svc-card" href="${href('services')}" data-scroll="svc-${s.key}" data-r>
+      ${imgSlot('svc-'+s.key,'16/10')}
+      <div class="svc-body svc-body-min"><span class="svc-num">${s.num} · ${s.tag}</span><h3 class="h3">${L(s.title)}</h3>${ic('arrow','fmt-arrow')}</div></a>`).join('')}</div>
     ${certList.length ? `<div class="certs" data-r><span class="certs-lbl">${t('Chứng nhận','Certifications')}</span>
-      <ul>${certList.map(c => `<li><b>${esc(c.code)}</b><span>${esc(L(c.name))}</span></li>`).join('')}</ul>
+      <ul>${certList.map(c => `<li>${c.logo ? `<img class="cert-logo" src="${esc(c.logo)}" alt="${esc(c.code)}" loading="lazy">` : ''}<div><b>${esc(c.code)}</b><span>${esc(L(c.name))}</span></div></li>`).join('')}</ul>
       ${!certs.length ? `<span class="certs-note">${t('Minh họa, chờ xác nhận chứng nhận thật','Illustrative, awaiting confirmation')}</span>` : ''}</div>` : ''}
   </div></section>
 
