@@ -742,7 +742,7 @@ a.soc:hover{background:var(--lime);color:var(--on-lime);border-color:var(--lime)
       <div class="svc-body svc-body-min"><span class="svc-num">07 · Drop-off</span><h3 class="h3">Drop-off catering</h3><svg class="fmt-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a></div>
     <div class="certs" data-r=""><span class="certs-lbl">Certifications</span>
       <ul><li><img class="cert-logo" src="/img/cert-attp.png" alt="ATTP" loading="lazy"><div><b>ATTP</b><span>Food safety eligibility certificate</span></div></li><li><img class="cert-logo" src="/img/cert-haccp.png" alt="HACCP" loading="lazy"><div><b>HACCP</b><span>Hazard analysis &amp; critical control points</span></div></li><li><img class="cert-logo" src="/img/cert-iso22000.png" alt="ISO 22000" loading="lazy"><div><b>ISO 22000</b><span>Food safety management</span></div></li></ul>
-      <span class="certs-note">Illustrative, awaiting confirmation</span></div>
+      </div>
   </div></section>
 
   <section class="sec band" aria-labelledby="bn-h"><div class="wrap">
@@ -866,9 +866,9 @@ const CONFIG = {
   },
   social: { facebook: null, messenger: null, zaloOA: null, linkedin: null },   // full URLs; icons stay visible, links activate once filled
   certifications: [                                                             // set verified:true only for certificates the company currently holds
-    { code:'ATTP', logo:'/img/cert-attp.png', name:{vi:'Cơ sở đủ điều kiện an toàn thực phẩm',en:'Food safety eligibility certificate'}, verified:false },
-    { code:'HACCP', logo:'/img/cert-haccp.png', name:{vi:'Hệ thống phân tích mối nguy',en:'Hazard analysis & critical control points'}, verified:false },
-    { code:'ISO 22000', logo:'/img/cert-iso22000.png', name:{vi:'Quản lý an toàn thực phẩm',en:'Food safety management'}, verified:false }
+    { code:'ATTP', logo:'/img/cert-attp.png', name:{vi:'Cơ sở đủ điều kiện an toàn thực phẩm',en:'Food safety eligibility certificate'}, verified:true },
+    { code:'HACCP', logo:'/img/cert-haccp.png', name:{vi:'Hệ thống phân tích mối nguy',en:'Hazard analysis & critical control points'}, verified:true },
+    { code:'ISO 22000', logo:'/img/cert-iso22000.png', name:{vi:'Quản lý an toàn thực phẩm',en:'Food safety management'}, verified:true }
   ],
   profilePdf: { vi: null, en: null },
   formEndpoints: { quote: null, careers: null },   // POST URLs of the form backend (email / Sheets adapter)
