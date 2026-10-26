@@ -565,11 +565,14 @@ a.soc:hover{background:var(--lime);color:var(--on-lime);border-color:var(--lime)
 
 /* testimonial avatars */
 .tm-card figcaption{display:flex!important;align-items:center;gap:12px}
-.tm-ava{width:44px;height:44px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;font-weight:700;font-size:.85rem;color:#FFFFFF;object-fit:cover}
+.tm-ava{width:52px;height:52px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;font-weight:700;font-size:.85rem;color:#FFFFFF;object-fit:cover}
 .tm-ava.av0{background:var(--blue)} .tm-ava.av1{background:var(--band)} .tm-ava.av2{background:var(--lime);color:var(--on-lime)}
 .tm-who{display:grid;gap:2px}
 .tm-who b{font-size:.95rem}
-.tm-who > span{font-size:.86rem;color:var(--ink2)}
+.tm-who > span{font-size:.86rem;color:var(--ink2);line-height:1.4}
+.tm-card figcaption{gap:14px!important}
+.tm-card figcaption .tm-ava{font-size:.85rem;color:#FFFFFF;line-height:1}
+.tm-card figcaption .tm-ava.av2{color:var(--on-lime)}
 
 /* home: format cards + certifications */
 .fmt-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:16px}
@@ -1216,7 +1219,7 @@ VIEWS.home = () => {
   const certList = certs.length ? certs : (CONFIG.demoContent ? CONFIG.certifications : []);
   const m = CONFIG.metrics;
   const ini = x => (x.name || L(x.role)).split(' ').filter(Boolean).slice(-2).map(w => w[0]).join('').toUpperCase();
-  const tcard = (x,i) => `<figure class="tm-card"><blockquote>“${esc(L(x.quote))}”</blockquote><figcaption>${x.avatar ? `<img class="tm-ava" src="${esc(x.avatar)}" alt="" loading="lazy">` : `<span class="tm-ava av${i%3}" aria-hidden="true">${esc(ini(x))}</span>`}<span class="tm-who"><b>${x.name ? esc(x.name) + ' · ' : ''}${esc(L(x.role))}</b><span>${esc(L(x.org))}${x.demo ? ` · ${t('Minh họa','Illustrative')}` : ''}</span></span></figcaption></figure>`;
+  const tcard = (x,i) => `<figure class="tm-card"><blockquote>“${esc(L(x.quote))}”</blockquote><figcaption>${x.avatar ? `<img class="tm-ava" src="${esc(x.avatar)}" alt="" loading="lazy">` : `<span class="tm-ava av${i%3}" aria-hidden="true">${esc(ini(x))}</span>`}<span class="tm-who"><b>${esc(x.name || L(x.role))}</b>${x.name ? `<span>${esc(L(x.role))}</span>` : ''}<span>${esc(L(x.org))}${x.demo ? ` · ${t('Minh họa','Illustrative')}` : ''}</span></span></figcaption></figure>`;
   const rowA = testi, rowB = [...testi].reverse();
   const faqs = faqList();
 
