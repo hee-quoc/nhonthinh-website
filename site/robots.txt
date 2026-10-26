@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nhonthinh.vn/sitemap.xml
+Sitemap: https://www.nhonthinh.com/sitemap.xml

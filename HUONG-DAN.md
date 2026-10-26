@@ -23,11 +23,11 @@ Các trang `noindex` (Google không đưa lên kết quả tìm kiếm): trang "
 
 ---
 
-## Bước 1: Đổi tên miền (nếu không dùng `nhonthinh.vn`)
+## Bước 1: Đổi tên miền (nếu không dùng `nhonthinh.com`)
 
-Bỏ qua bước này nếu tên miền đúng là `nhonthinh.vn`.
+Bỏ qua bước này nếu tên miền đúng là `nhonthinh.com`.
 
-1. Mở `source/nhon-thinh.html`, tìm dòng `siteUrl: 'https://nhonthinh.vn'` và đổi thành tên miền thật.
+1. Mở `source/nhon-thinh.html`, tìm dòng `siteUrl: 'https://www.nhonthinh.com'` và đổi thành tên miền thật.
 2. Build lại (cần cài Node.js 18 trở lên):
    ```bash
    cd source
@@ -57,16 +57,16 @@ Lưu ý: gói **Hobby** (miễn phí) của Vercel chỉ dành cho dự án cá 
 
 ## Bước 3: Gắn tên miền
 
-1. Trên Vercel, vào **Project → Settings → Domains**, thêm `nhonthinh.vn` và `www.nhonthinh.vn`.
+1. Trên Vercel, vào **Project → Settings → Domains**, thêm `nhonthinh.com` và `www.nhonthinh.com`.
 2. Vercel sẽ hiện bản ghi DNS cần tạo. Thường là một bản ghi `A` cho tên miền gốc và một `CNAME` cho `www`; hãy dùng đúng giá trị Vercel hiển thị. Tạo các bản ghi này ở nơi bạn mua tên miền (Mắt Bão, PA Việt Nam, iNET…).
-3. Đặt `nhonthinh.vn` làm tên miền chính, `www` tự chuyển hướng về đó.
+3. Đặt `nhonthinh.com` làm tên miền chính, `www` tự chuyển hướng về đó.
 4. HTTPS được Vercel cấp tự động sau khi DNS có hiệu lực (từ vài phút đến vài giờ).
 
 ## Bước 4: Google Search Console
 
-1. Vào search.google.com/search-console và chọn **Add property → Domain**, nhập `nhonthinh.vn`.
+1. Vào search.google.com/search-console và chọn **Add property → Domain**, nhập `nhonthinh.com`.
 2. Google đưa một bản ghi `TXT`. Thêm bản ghi này vào DNS tên miền rồi bấm **Verify**.
-3. Vào mục **Sitemaps** và gửi `https://nhonthinh.vn/sitemap.xml`.
+3. Vào mục **Sitemaps** và gửi `https://www.nhonthinh.com/sitemap.xml`.
 4. Vào **URL Inspection**, dán link trang chủ và trang `/dich-vu`, rồi bấm **Request indexing** để Google vào sớm hơn.
 
 Thông thường cần vài ngày đến vài tuần để trang bắt đầu xuất hiện trên Google.
@@ -75,7 +75,7 @@ Thông thường cần vài ngày đến vài tuần để trang bắt đầu xu
 
 1. Vào business.google.com, tạo hồ sơ tên **Nhơn Thịnh**, danh mục gần nhất là "Dịch vụ cung cấp đồ ăn" hoặc "Caterer".
 2. Địa chỉ ghi đúng như trên website: Thửa đất số 1047, Tờ bản đồ 46, Khu phố Bình Chánh Đông, Phường Tân Hiệp, TP. Hồ Chí Minh.
-3. Số điện thoại: 0906 811 569. Website: `https://nhonthinh.vn`.
+3. Số điện thoại: 0906 811 569. Website: `https://www.nhonthinh.com`.
 4. Xác minh theo cách Google yêu cầu (video, điện thoại hoặc thư).
 5. Đăng ảnh thật của bếp, xe giao, đội ngũ. Mời khách hàng quen để lại đánh giá trên Google.
 
