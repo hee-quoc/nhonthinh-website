@@ -81,11 +81,12 @@ button{font:inherit;color:inherit}
 .brand-txt{display:flex;flex-direction:column;line-height:1.05}
 .brand-name{font-weight:800;font-size:1.18rem;letter-spacing:-.03em}
 .brand-sub{font-family:var(--f-label);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);font-weight:600;margin-top:3px}
-.nav{display:flex;gap:4px;list-style:none;margin:0 0 0 auto;padding:0}
+.hdr-in > nav{flex:1;display:flex;justify-content:center;min-width:0}
+.nav{display:flex;gap:4px;list-style:none;margin:0;padding:0}
 .nav a{display:block;padding:9px 12px;border-radius:var(--r-sm);text-decoration:none;font-weight:600;font-size:.93rem;color:var(--ink2);transition:color .2s,background-color .2s}
 .nav a:hover{color:var(--ink);background:var(--mint)}
 .nav a[aria-current="page"]{color:var(--ink);background:var(--mint)}
-.hdr-act{display:flex;align-items:center;gap:10px}
+.hdr-act{display:flex;align-items:center;gap:10px;margin-left:auto}
 .lang{display:flex;border:1.5px solid var(--line);border-radius:var(--r-sm);padding:3px;font-family:var(--f-label);font-weight:600;font-size:.82rem}
 .lang a{text-decoration:none;padding:5px 10px;border-radius:var(--r-sm);color:var(--ink2);min-width:36px;text-align:center}
 .lang a[aria-current="true"]{background:var(--ink);color:var(--bg)}
