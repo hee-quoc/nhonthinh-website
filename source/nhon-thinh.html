@@ -75,6 +75,9 @@ button{font:inherit;color:inherit}
 .hdr-in{display:flex;align-items:center;gap:20px;min-height:76px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0}
 .brand-mark{width:42px;height:42px;flex-shrink:0}
+.brand-logo{display:block;height:36px;width:auto}
+@media (max-width:560px){.brand-logo{height:30px}}
+.ftr .brand-logo,.mnav-top .brand-logo{filter:brightness(0) invert(1)}
 .brand-txt{display:flex;flex-direction:column;line-height:1.05}
 .brand-name{font-weight:800;font-size:1.18rem;letter-spacing:-.03em}
 .brand-sub{font-family:var(--f-label);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);font-weight:600;margin-top:3px}
@@ -850,7 +853,8 @@ function tray(cls=''){
 }
 function capTray(){ return `<svg viewBox="0 0 170 74" aria-hidden="true"><g transform="translate(14 9) scale(.38)">${tray().replace(/^<svg[^>]*>|<\/svg>$/g,'')}</g><g transform="translate(92 9) scale(.38)">${tray().replace(/^<svg[^>]*>|<\/svg>$/g,'')}</g></svg>`; }
 function capSteam(){ return `<svg viewBox="0 0 170 74" aria-hidden="true" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"><path d="M40 60c-12-10 12-18 0-30s8-18 0-24"/><path d="M85 60c-12-10 12-18 0-30s8-18 0-24" opacity=".75"/><path d="M130 60c-12-10 12-18 0-30s8-18 0-24" opacity=".5"/></svg>`; }
-const LOGO = `<svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="6" fill="var(--blue)"/><path d="M10 26h28a14 14 0 0 1-28 0z" fill="var(--on-blue)"/><circle cx="31" cy="15" r="5" fill="#25D366"/><path d="M18 12c-2 2.4 2 3.6 0 6.4" stroke="var(--on-blue)" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>`;
+const LOGO_SRC = 'img/logo-nhonthinh.png';
+const LOGO = `<img class="brand-logo" src="${LOGO_SRC}" alt="Nhơn Thịnh Catering" width="347" height="103">`;
 
 /* ================= routing ================= */
 const PAGES = {
@@ -1008,11 +1012,11 @@ function header(){
     <a href="${swapHref('vi')}" hreflang="vi" lang="vi" ${state.lang==='vi'?'aria-current="true"':''} title="Tiếng Việt">VI</a><span aria-hidden="true">/</span><a href="${swapHref('en')}" hreflang="en" lang="en" ${state.lang==='en'?'aria-current="true"':''} title="English">EN</a></div>`;
   const links = NAV.map(([p,lab]) => `<li><a href="${href(p)}" ${r.page===p || (p==='events'&&r.page==='event') ? 'aria-current="page"':''}>${L(lab)}</a></li>`).join('');
   document.getElementById('hdr').innerHTML = `<div class="hdr-in wrap">
-    <a class="brand" href="${href('home')}" aria-label="Nhơn Thịnh, ${t('Trang chủ','Home')}">${LOGO}<span class="brand-txt"><span class="brand-name">Nhơn Thịnh</span><span class="brand-sub">${t('Suất ăn công nghiệp','Industrial catering')}</span></span></a>
+    <a class="brand" href="${href('home')}" aria-label="Nhơn Thịnh, ${t('Trang chủ','Home')}">${LOGO}</a>
     <nav aria-label="${t('Điều hướng chính','Main navigation')}"><ul class="nav">${links}</ul></nav>
     <div class="hdr-act">${langSw}<span class="hdr-sep" aria-hidden="true"></span><a class="btn btn-primary sm" href="${href('contact')}">${t('Nhận báo giá','Get a quote')}</a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav" aria-label="${t('Mở menu','Open menu')}" id="menuBtn"><span></span></button></div></div>`;
-  document.getElementById('mnav').innerHTML = `<div class="mnav-top"><span class="brand">${LOGO}<span class="brand-txt"><span class="brand-name">Nhơn Thịnh</span></span></span>
+  document.getElementById('mnav').innerHTML = `<div class="mnav-top"><span class="brand">${LOGO}</span>
     <button class="mnav-close" type="button" id="menuClose" aria-label="${t('Đóng menu','Close menu')}">×</button></div>
     <nav aria-label="${t('Điều hướng chính','Main navigation')}"><ul><li><a href="${href('home')}" ${r.page==='home'?'aria-current="page"':''}>${t('Trang chủ','Home')}</a></li>${links}<li><a href="${href('contact')}" ${r.page==='contact'?'aria-current="page"':''}>${t('Liên hệ','Contact')}</a></li></ul></nav>
     <div class="mnav-foot">${langSw}<a class="btn btn-lime" href="${href('contact')}">${t('Nhận báo giá','Get a quote')} ${ic('arrow')}</a></div>`;
@@ -1086,7 +1090,7 @@ function footer(){
   </div></section>` : ''}
   <div class="ftr"><div class="wrap">
     <div class="fgrid">
-      <div class="fcol"><a class="brand" href="${href('home')}">${LOGO}<span class="brand-txt"><span class="brand-name">Nhơn Thịnh</span><span class="brand-sub">${t('Suất ăn công nghiệp','Industrial catering')}</span></span></a>
+      <div class="fcol"><a class="brand" href="${href('home')}">${LOGO}</a>
         <p style="max-width:34ch;margin-top:18px">${t('Bữa ăn chuẩn mực, đối tác bền lâu. An toàn từng suất, đúng hẹn mỗi ngày.','Safe meals. Steady partner. Safe in every meal, on time every day.')}</p>
         <div class="socs">${socialIcons()}</div></div>
       <div class="fcol"><h3>${t('Trang','Pages')}</h3><ul>
