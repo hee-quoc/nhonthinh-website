@@ -204,9 +204,12 @@ section{position:relative}
 .dish-list{list-style:none;margin:0;padding:0;display:grid}
 .dish{display:grid;grid-template-columns:120px minmax(0,1fr) auto;gap:16px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
 .dish:first-child{padding-top:4px}
+.dish-img{width:72px;height:72px;object-fit:cover;border-radius:var(--r-sm);display:block}
+@media (max-width:520px){.dish-img{width:56px;height:56px}}
 .dish .cat{font-family:var(--f-label);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);font-weight:600}
 .dish .name{font-size:1.1rem;font-weight:700;letter-spacing:-.02em}
 @media (max-width:520px){.dish{grid-template-columns:1fr;gap:4px}}
+@media (max-width:520px){.dish.with-img{grid-template-columns:minmax(0,1fr) auto;column-gap:14px}.dish.with-img .dish-img{grid-column:2;grid-row:1/span 2}}
 .tagd{font-family:var(--f-label);font-size:.72rem;font-weight:600;padding:4px 9px;border-radius:var(--r-sm);background:var(--mint);letter-spacing:.04em}
 .draft{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;font-weight:600;padding:7px 12px;border-radius:var(--r-sm);border:1px solid var(--line);background:var(--mint2);color:var(--ink2)}
 .draft svg{width:16px;height:16px}
@@ -796,7 +799,7 @@ const CONFIG = {
   imagesAreAI: false,       // true = images are AI-generated illustrations; a small label is shown on each
   demoContent: true,       // show clearly-labelled illustrative events, testimonials and certificate row until real ones are approved
   services: { industrial:'active', institutional:'active', corporate:'active', contract:'active', onsite:'active', offsite:'active', dropoff:'active' }, // active | soon | hidden
-  menu: { isSample: true },// set false once the kitchen's real weekly menu replaces MENU below
+  menu: { isSample: false },// set false once the kitchen's real weekly menu replaces MENU below
   events: [],              // { slug, name:{vi,en}, guests, formats:[], cover, gallery:[], intro:{vi,en}, overview:{vi,en}, staff, venue, menu:{vi:[],en:[]}, quote:{text,name,role,company}, approved:true }
   testimonials: [],        // { quote:{vi,en}, name, role, company, approved:true }
   clientLogos: [],
@@ -812,7 +815,8 @@ const CONFIG = {
 
 /* Weekly menu — single source for Home + Menu page. Currently a SAMPLE (flagged on screen). */
 const MENU = [
-  { day:{vi:'Thứ 2',en:'Mon'}, main:{vi:'Cá basa kho tộ',en:'Clay-pot braised basa fish'}, stir:{vi:'Bắp cải xào cà rốt',en:'Stir-fried cabbage & carrot'}, soup:{vi:'Canh bí đỏ nấu tôm',en:'Pumpkin & shrimp soup'}, dessert:{vi:'Chuối',en:'Banana'} },
+  { day:{vi:'Thứ 2',en:'Mon'}, main:{vi:'Cá basa kho tộ',en:'Clay-pot braised basa fish'}, stir:{vi:'Bắp cải xào cà rốt',en:'Stir-fried cabbage & carrot'}, soup:{vi:'Canh bí đỏ nấu tôm',en:'Pumpkin & shrimp soup'}, dessert:{vi:'Chuối',en:'Banana'},
+    img:{ main:'/img/dish-ca-basa-kho-to.jpg', stir:'/img/dish-bap-cai-xao.jpg', soup:'/img/dish-canh-bi-do.jpg', dessert:'/img/dish-chuoi.jpg' } },
   { day:{vi:'Thứ 3',en:'Tue'}, main:{vi:'Thịt kho trứng',en:'Caramelised pork with egg'}, stir:{vi:'Đậu que xào tỏi',en:'Garlic green beans'}, soup:{vi:'Canh chua cá',en:'Sweet & sour fish soup'}, dessert:{vi:'Dưa hấu',en:'Watermelon'} },
   { day:{vi:'Thứ 4',en:'Wed'}, main:{vi:'Gà chiên nước mắm',en:'Fish-sauce fried chicken'}, stir:{vi:'Rau muống xào tỏi',en:'Garlic morning glory'}, soup:{vi:'Canh cải ngọt thịt bằm',en:'Choy sum & minced pork soup'}, dessert:{vi:'Sữa chua',en:'Yoghurt'} },
   { day:{vi:'Thứ 5',en:'Thu'}, main:{vi:'Sườn ram mặn ngọt',en:'Sweet & savoury pork ribs'}, stir:{vi:'Su su xào',en:'Stir-fried chayote'}, soup:{vi:'Canh rau ngót',en:'Katuk leaf soup'}, dessert:{vi:'Thanh long',en:'Dragon fruit'} },
@@ -1191,7 +1195,7 @@ function menuWidget(id){
     </div>
     <div role="tabpanel" id="${id}-p" aria-labelledby="${id}-t${state.menuDay}" tabindex="0">
       <p class="eyebrow" style="margin-bottom:12px">${dayFull(state.menuDay)}</p>
-      <ul class="dish-list panel-anim">${cats.map(([k,lab]) => `<li class="dish"><span class="cat">${L(lab)}</span><span class="name">${esc(L(d[k]))}</span><span></span></li>`).join('')}</ul>
+      <ul class="dish-list panel-anim">${cats.map(([k,lab]) => `<li class="dish${d.img?.[k] ? ' with-img' : ''}"><span class="cat">${L(lab)}</span><span class="name">${esc(L(d[k]))}</span>${d.img?.[k] ? `<img class="dish-img" src="${esc(d.img[k])}" alt="${esc(L(d[k]))}" loading="lazy" width="72" height="72">` : '<span></span>'}</li>`).join('')}</ul>
     </div></div>`;
 }
 
@@ -1361,7 +1365,7 @@ VIEWS.services = () => {
         ${min ? `<p class="fit"><b>${s.minKey==='contractMonths'?t('Thời hạn:','Term:'):t('Quy mô:','Scale:')}</b> ${t('từ','from')} ${fmtN(min)} ${L(s.unit)}</p>` : ''}
         <div class="svc-foot">${st==='active' ? `<a class="btn btn-primary sm" href="${href('contact')}" data-pre="${s.key}">${t('Nhận báo giá','Get a quote')} ${ic('arrow')}</a>` : ''}${s.key==='offsite' && CONFIG.events.length ? `<a class="tlink" href="${href('events')}">${t('Xem sự kiện đã phục vụ','See events')}</a>`:''}</div>
       </div>
-      <div class="svc-side">${imgSlot('svc-'+s.key,'16/10')}<ul class="ben">${L(s.ben).map(b => `<li>${ic('check')}<span>${b}</span></li>`).join('')}</ul></div>
+      <div class="svc-side">${imgSlot('svc-'+s.key,'16/10')}</div>
     </article>`;
   };
   const scen = [
@@ -1426,8 +1430,7 @@ VIEWS.events = () => {
   const ev = allEvents();
   return `<section class="phero"><div class="wrap">
     <span class="eyebrow">${t('Sự kiện','Events')}</span>
-    <h1 data-h>${t('Sự kiện Nhơn Thịnh đã phục vụ','Events Nhơn Thịnh has catered')}</h1>
-    <p class="lead" data-h>${t('Ảnh thật tại sự kiện, không dàn dựng.','Real photos from real events, not staged.')}</p></div></section>
+    <h1 data-h>${t('Sự kiện Nhơn Thịnh đã phục vụ','Events Nhơn Thịnh has catered')}</h1></div></section>
   <section class="sec" style="padding-top:0"><div class="wrap">
     ${ev.length ? (ev[0].demo ? demoNote() : '') + eventGrid(ev) : `<div class="empty" data-r><span class="ill">${ic('cal')}</span><h2>${t('Chúng tôi đang chọn lọc ảnh thật','We are gathering real photos')}</h2>
       <p>${t('Nhơn Thịnh chỉ đăng những sự kiện có ảnh thật và được khách hàng đồng ý công bố. Trong lúc chờ, bạn có thể gửi yêu cầu cho tiệc tất niên, hội thao hay khai trương sắp tới.','Nhơn Thịnh only publishes events with real photos and the client’s permission. Meanwhile, you can request a quote for an upcoming year-end party, sports day or opening.')}</p>
@@ -1900,7 +1903,7 @@ function paint(){
   const main = document.getElementById('main');
   main.innerHTML = (VIEWS[r.page] || VIEWS['404'])(r);
   setMeta(r); bind();
-  if (state.scrollTo) requestAnimationFrame(() => setTimeout(doScroll, 60)); else window.scrollTo(0,0);
+  if (state.scrollTo) requestAnimationFrame(() => setTimeout(doScroll, 60)); else window.scrollTo({top:0, left:0, behavior:'instant'});
   anim();
   if (!state.first && !state.scrollTo) main.focus({preventScroll:true});
 }
