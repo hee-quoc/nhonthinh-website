@@ -965,7 +965,7 @@ const META = {
   home:{vi:['Suất ăn công nghiệp Bình Dương | Nhơn Thịnh','Nhơn Thịnh cung cấp suất ăn công nghiệp cho doanh nghiệp tại miền Nam. An toàn từng suất, đúng hẹn mỗi ngày.'],en:['Industrial Catering in Binh Duong | Nhơn Thịnh','Nhơn Thịnh supplies industrial meals to businesses in southern Vietnam. Safe meals, on time every day.']},
   services:{vi:['Dịch vụ catering doanh nghiệp, suất ăn công nghiệp | Nhơn Thịnh','Suất ăn công nghiệp, suất ăn tổ chức, catering doanh nghiệp, hợp đồng trọn gói, phục vụ tại chỗ, tại sự kiện và giao tận nơi.'],en:['Corporate & Industrial Catering Services | Nhơn Thịnh','Industrial, institutional and corporate catering; contract, on-site, off-site and drop-off service.']},
   menu:{vi:['Thực đơn suất ăn công nghiệp | Nhơn Thịnh','Thực đơn thay đổi hằng ngày, luân phiên theo tuần, cân đối dinh dưỡng.'],en:['Industrial Meal Menu | Nhơn Thịnh','A menu that changes daily and rotates weekly, with balanced meals.']},
-  events:{vi:['Sự kiện đã phục vụ | Nhơn Thịnh','Tiệc và sự kiện doanh nghiệp Nhơn Thịnh đã phục vụ, kèm ảnh thật.'],en:['Events We Have Catered | Nhơn Thịnh','Corporate parties and events catered by Nhơn Thịnh, with real photos.']},
+  events:{vi:['Tiệc và sự kiện doanh nghiệp | Nhơn Thịnh','Nhơn Thịnh phục vụ tiệc tất niên, hội thao, khai trương nhà máy: buffet, set menu, tiệc đứng và suất hộp.'],en:['Corporate Events Catering | Nhơn Thịnh','Nhơn Thịnh caters year-end parties, sports days and factory openings: buffets, set menus, standing receptions and boxed meals.']},
   about:{vi:['Về Nhơn Thịnh | Thịnh vượng từ sự tử tế','Câu chuyện, tầm nhìn và giá trị của Nhơn Thịnh.'],en:['About Nhơn Thịnh | Prosperity built on kindness','The story, vision and values of Nhơn Thịnh.']},
   safety:{vi:['Quy trình và an toàn thực phẩm | Nhơn Thịnh','Quy trình khép kín 7 bước, kiểm thực 3 bước, lưu mẫu 24 giờ.'],en:['Food Safety & Process | Nhơn Thịnh','A closed 7-step process, 3-stage food checks and 24-hour sample retention.']},
   careers:{vi:['Tuyển dụng nhân viên bếp, phụ bếp | Nhơn Thịnh','Việc làm với giờ giấc rõ ràng, thu nhập minh bạch.'],en:['Kitchen Jobs | Nhơn Thịnh','Work with clear hours and transparent pay.']},
@@ -1013,11 +1013,11 @@ const SERVICES = [
 ];
 const DEMO_EVENTS = [
   { slug:'tiec-tat-nien', demo:true, img:'ev-yearend', name:{vi:'Tiệc tất niên doanh nghiệp',en:'Corporate year-end party'}, formats:['Buffet','Set menu'],
-    intro:{vi:'Bố cục mẫu cho một case study tiệc tất niên tại nhà máy.',en:'Layout sample for a year-end party case study at a factory.'} },
+    intro:{vi:'Tiệc tất niên tại nhà máy hoặc nhà hàng, phục vụ buffet hoặc set menu cho toàn bộ nhân viên.',en:'Year-end parties at the factory or a venue, with a buffet or set menu for all staff.'} },
   { slug:'hoi-thao', demo:true, img:'ev-sports', name:{vi:'Hội thao công ty',en:'Company sports day'}, formats:['Drop-off',{vi:'Suất hộp',en:'Boxed meals'}],
-    intro:{vi:'Bố cục mẫu cho một case study hội thao ngoài trời.',en:'Layout sample for an outdoor sports day case study.'} },
+    intro:{vi:'Hội thao ngoài trời với suất hộp và nước uống giao tận nơi, đúng giờ nghỉ giữa các nội dung thi đấu.',en:'Outdoor sports days with boxed meals and drinks delivered on time for each break.'} },
   { slug:'khai-truong', demo:true, img:'ev-opening', name:{vi:'Khai trương nhà máy',en:'Factory opening'}, formats:[{vi:'Tiệc đứng',en:'Standing reception'}],
-    intro:{vi:'Bố cục mẫu cho một case study tiệc khai trương.',en:'Layout sample for an opening reception case study.'} }
+    intro:{vi:'Tiệc đứng khai trương nhà máy với món nhẹ, đồ uống và đội phục vụ tại chỗ.',en:'Factory opening receptions with finger food, drinks and service staff on site.'} }
 ];
 const allEvents = () => { const real = CONFIG.events.filter(e => e.approved); return real.length ? real : (CONFIG.demoContent ? DEMO_EVENTS : []); };
 const demoNote = () => `<div class="demo-note">${ic('alert')}<span>${t('Đây là bố cục minh họa với ảnh AI, không phải sự kiện có thật. Sự kiện thật của Nhơn Thịnh sẽ thay thế khi có ảnh và được khách hàng đồng ý công bố.','This is an illustrative layout with AI imagery, not a real event. Nhơn Thịnh’s real events will replace it once photos and client consent are in place.')}</span></div>`;
@@ -1351,7 +1351,7 @@ function testimonialGrid(list){
   return `<div class="why">${list.map(q => `<figure class="card" data-r style="margin:0"><blockquote style="margin:0;font-size:1.15rem;font-weight:600">“${esc(L(q.quote))}”</blockquote><figcaption class="muted">${esc(q.name)} · ${esc(L(q.role))} · ${esc(q.company)}</figcaption></figure>`).join('')}</div>`;
 }
 function eventGrid(list){
-  return `<div class="ev-grid">${list.map(e => `<a class="ev" href="${href('event',state.lang,e.slug)}" data-r>${e.cover ? `<figure class="ph" style="margin:0"><img src="${esc(e.cover)}" alt="${esc(L(e.name))}" loading="lazy"></figure>` : imgSlot(e.img)}<h3 class="h3">${esc(L(e.name))}</h3><div class="chips">${e.guests?`<span class="chip">${fmtN(e.guests)} ${t('khách','guests')}</span>`:''}${(e.formats||[]).slice(0,2).map(f => `<span class="chip">${esc(L(f))}</span>`).join('')}${e.demo?`<span class="chip">${t('Minh họa','Illustrative')}</span>`:''}</div></a>`).join('')}</div>`;
+  return `<div class="ev-grid">${list.map(e => `<a class="ev" href="${href('event',state.lang,e.slug)}" data-r>${e.cover ? `<figure class="ph" style="margin:0"><img src="${esc(e.cover)}" alt="${esc(L(e.name))}" loading="lazy"></figure>` : imgSlot(e.img)}<h3 class="h3">${esc(L(e.name))}</h3><div class="chips">${e.guests?`<span class="chip">${fmtN(e.guests)} ${t('khách','guests')}</span>`:''}${(e.formats||[]).slice(0,2).map(f => `<span class="chip">${esc(L(f))}</span>`).join('')}</div></a>`).join('')}</div>`;
 }
 function docSection(docs){
   return `<section class="sec" aria-labelledby="doc-h"><div class="wrap">${sh(t('Pháp lý','Legal'), t('Pháp lý và chứng nhận','Licences and certificates'), '', 'doc-h')}
@@ -1435,9 +1435,9 @@ VIEWS.events = () => {
   const ev = allEvents();
   return `<section class="phero"><div class="wrap">
     <span class="eyebrow">${t('Sự kiện','Events')}</span>
-    <h1 data-h>${t('Sự kiện Nhơn Thịnh đã phục vụ','Events Nhơn Thịnh has catered')}</h1></div></section>
+    <h1 data-h>${t('Sự kiện Nhơn Thịnh phục vụ','Events Nhơn Thịnh caters')}</h1></div></section>
   <section class="sec" style="padding-top:0"><div class="wrap">
-    ${ev.length ? (ev[0].demo ? demoNote() : '') + eventGrid(ev) : `<div class="empty" data-r><span class="ill">${ic('cal')}</span><h2>${t('Chúng tôi đang chọn lọc ảnh thật','We are gathering real photos')}</h2>
+    ${ev.length ? eventGrid(ev) : `<div class="empty" data-r><span class="ill">${ic('cal')}</span><h2>${t('Chúng tôi đang chọn lọc ảnh thật','We are gathering real photos')}</h2>
       <p>${t('Nhơn Thịnh chỉ đăng những sự kiện có ảnh thật và được khách hàng đồng ý công bố. Trong lúc chờ, bạn có thể gửi yêu cầu cho tiệc tất niên, hội thao hay khai trương sắp tới.','Nhơn Thịnh only publishes events with real photos and the client’s permission. Meanwhile, you can request a quote for an upcoming year-end party, sports day or opening.')}</p>
       ${svcStatus('offsite')==='active' ? `<a class="btn btn-primary" href="${href('contact')}" data-pre="offsite">${t('Nhận báo giá sự kiện','Get an event quote')} ${ic('arrow')}</a>` : ''}</div>`}
   </div></section>`;
@@ -1450,10 +1450,10 @@ VIEWS.event = r => {
   if (e.demo) return `<section class="phero"><div class="wrap">
     <div class="chips">${e.formats.map(f => `<span class="chip">${esc(L(f))}</span>`).join('')}</div>
     <h1 data-h>${esc(L(e.name))}</h1><p class="lead">${esc(L(e.intro))}</p></div></section>
-  <section class="sec" style="padding-top:0"><div class="wrap">${demoNote()}${imgSlot(e.img,'16/7')}</div></section>
+  <section class="sec" style="padding-top:0"><div class="wrap">${imgSlot(e.img,'16/7')}</div></section>
   <section class="sec" style="padding-top:0"><div class="wrap split" style="align-items:start">
-    <div class="prose"><h2 class="h3">${t('Tổng quan','Overview')}</h2><p>${t('Phần này kể lại yêu cầu của khách hàng và cách Nhơn Thịnh chuẩn bị: thực đơn, nhân sự, vận chuyển và bố trí tại địa điểm.','This section tells the client’s brief and how Nhơn Thịnh prepared: menu, staffing, transport and set-up at the venue.')}</p></div>
-    <dl class="kv card"><dt>${t('Số khách','Guests')}</dt><dd class="muted">${t('Theo sự kiện thật','From the real event')}</dd><dt>${t('Hình thức','Format')}</dt><dd>${e.formats.map(L).join(', ')}</dd><dt>${t('Nhân sự tại chỗ','Staff on site')}</dt><dd class="muted">${t('Theo sự kiện thật','From the real event')}</dd><dt>${t('Địa điểm','Venue')}</dt><dd class="muted">${t('Theo sự kiện thật','From the real event')}</dd></dl>
+    <div class="prose"><h2 class="h3">${t('Tổng quan','Overview')}</h2><p>${t('Nhơn Thịnh nhận yêu cầu, lên thực đơn riêng cho sự kiện, rồi lo trọn gói nhân sự, vận chuyển và bố trí tại địa điểm.','Nhơn Thịnh takes your brief, designs a menu for the event, then handles staffing, transport and set-up at the venue.')}</p></div>
+    <dl class="kv card"><dt>${t('Hình thức','Format')}</dt><dd>${e.formats.map(L).join(', ')}</dd><dt>${t('Bao gồm','Includes')}</dt><dd>${t('Thực đơn riêng, nhân sự, vận chuyển, dụng cụ','Custom menu, staff, transport, equipment')}</dd></dl>
   </div></section>
   <section class="sec" style="padding-top:0"><div class="wrap"><div class="ev-grid">${['ev-g1','ev-g2','ev-g3','ev-g4'].map(k => imgSlot(k,'1/1')).join('')}</div></div></section>
   <section class="sec" style="padding-top:0"><div class="wrap"><h2 class="h3" style="margin-bottom:20px">${t('Sự kiện khác','More events')}</h2>${eventGrid(rel)}<p style="margin-top:20px"><a class="tlink" href="${href('events')}">${t('Xem tất cả sự kiện','All events')}</a></p></div></section>`;
